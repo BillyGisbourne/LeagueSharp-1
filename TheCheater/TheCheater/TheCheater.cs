@@ -53,14 +53,14 @@ namespace TheCheater
         {
             if (!_mainMenu.Item("drawing").GetValue<bool>()) return;
 
-            Drawing.DrawLine(new Vector2(_screenPos.X, _screenPos.Y + 15), new Vector2(_screenPos.X + 180, _screenPos.Y + 15), 2, Color.Red);
+            Drawing.DrawLine(new Vector2(_screenPos.X, _screenPos.Y + 15), new Vector2(_screenPos.X + 180, _screenPos.Y + 15), 2, Color.Cyan);
            
             var column = 1;
-            Drawing.DrawText(_screenPos.X, _screenPos.Y, Color.Red, "Cheat-pattern detection:");
+            Drawing.DrawText(_screenPos.X, _screenPos.Y, Color.Cyan, "Cheat-pattern detection:");
             foreach (var detector in _detectors)
             {
                 var maxValue = detector.Value.Max(item => item.GetScriptDetections());
-                Drawing.DrawText(_screenPos.X, column * 20 + _screenPos.Y, Color.Red, HeroManager.AllHeroes.First(hero => hero.NetworkId == detector.Key).Name + ": " + maxValue + (maxValue > 0 ? " (" + detector.Value.First(itemId => itemId.GetScriptDetections() == maxValue).GetName() + ")" : string.Empty));
+                Drawing.DrawText(_screenPos.X, column * 20 + _screenPos.Y, Color.Cyan, HeroManager.AllHeroes.First(hero => hero.NetworkId == detector.Key).Name + ": " + maxValue + (maxValue > 0 ? " (" + detector.Value.First(itemId => itemId.GetScriptDetections() == maxValue).GetName() + ")" : string.Empty));
                 column++;
             }
         }
